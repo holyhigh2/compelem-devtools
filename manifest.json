@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Compelem DevTools",
+  "version": "0.2.0",
+  "description": "DevTools extension for compelem WebComponent framework",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "contextMenus",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/index.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content/index.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "devtools_page": "devtools/index.html",
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "injected/index.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
